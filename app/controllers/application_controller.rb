@@ -13,8 +13,10 @@ class ApplicationController < ActionController::Base
     redirect_to foursquare_url unless logged_in?
   end
 
+    # whenever users do not have an access token stored in their session, they will be redirected to the Foursquare authorization URL.
+
   def logged_in?
     !!session[:token]
   end
-  
+
 end
