@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :authenticate_user
-  # Make sure to skip the authenticate_user before_action when you're creating a session
+  # Make sure to skip the authenticate_user before_action when you're creating a session, otherwise you'll end up in an infinite loop of trying to figure out who the user is, which is a very existential bug.
 
   def create
     resp = Faraday.get("https://foursquare.com/oauth2/access_token") do |req|
